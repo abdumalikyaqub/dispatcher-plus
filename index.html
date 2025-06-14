@@ -3,33 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Управление тепловозами и машинистами</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<!-- ----------------------------------------------------
-     Общая кнопка для добавления новой основной колонки
------------------------------------------------------ -->
-<div style="padding: 12px; background: #4c8ff1; display: flex; justify-content: space-between; align-items: center; border-radius: 12px;">
-    <h1 style="margin: 0; font-size: 20px; color: #ffffff">Тақсимоти бригадҳои локомативии пойгоҳи минтақаи Суғд</h1>
-    <button id="add-column-btn" style="
-      padding: 6px 10px;
-      font-size: 15px;
-      background: #fbfbfb;
-      color: #121111;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    ">+ Добавить колонку</button>
+<body class="bg-gray-100 min-h-screen font-sans">
+
+<!-- Хедер с кнопкой добавления колонки -->
+<div class="flex items-center justify-between bg-blue-600 text-white px-6 py-4 rounded-lg m-4">
+    <h1 class="text-lg font-semibold">Тақсимоти бригадҳои локомативии пойгоҳи минтақаи Суғд</h1>
+    <button id="add-column-btn"
+            class="bg-white text-gray-800 text-sm font-medium px-4 py-2 rounded hover:bg-gray-200 transition">
+        + Добавить колонку
+    </button>
 </div>
 
-<!-- ----------------------------------------------------
-     Контейнер для всех колонок (будут создаваться JS)
------------------------------------------------------ -->
-<div id="board" class="board"></div>
+<!-- Контейнер для доски -->
+<div id="board" class="flex flex-wrap gap-4 justify-center px-4 pb-6" style="max-width: 100%;"></div>
 
-<!-- SortableJS (для drag & drop) -->
+<!-- SortableJS -->
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-<!-- Наш обновлённый скрипт -->
+<!-- Ваш скрипт -->
 <script src="index.js"></script>
 </body>
 </html>
