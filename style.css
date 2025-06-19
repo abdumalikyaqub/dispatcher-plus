@@ -1,8 +1,7 @@
-/* --------------------- */
 body {
     margin: 0;
     font-family: sans-serif;
-    background-image: url('./assets/images/background.jpg'); /* ← ваш файл */
+    background-image: url('./assets/images/background.JPG'); /* ← ваш файл */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
