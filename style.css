@@ -270,3 +270,21 @@ body {
     border-radius: 4px;
     margin-bottom: 6px;
 }
+
+.card-content {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.card-photo-side {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.card-text {
+    flex: 1;
+}

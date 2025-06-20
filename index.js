@@ -495,34 +495,42 @@ function createCardElement(card) {
     cardDiv.setAttribute('data-type', card.type);
     cardDiv.setAttribute('data-id', card.id);
 
-    // Заголовок
-    const h4 = document.createElement('h4');
+    const contentWrapper = document.createElement('div');
+    contentWrapper.classList.add('card-content');
+
+    // Фото слева
     if (card.photoUrl) {
         const img = document.createElement('img');
         img.src = card.photoUrl;
         img.alt = 'Фото';
-        img.classList.add('card-photo');
-        cardDiv.appendChild(img);
+        img.classList.add('card-photo-side');
+        contentWrapper.appendChild(img);
     }
-    if (card.type === 'locomotive') {
-        h4.textContent = `Тепловоз: ${card.name}`;
-    } else {
-        h4.textContent = `ФИО: ${card.name}`;
-    }
-    cardDiv.appendChild(h4);
 
-    // Параграфы
+    // Текст справа
+    const textDiv = document.createElement('div');
+    textDiv.classList.add('card-text');
+
+    const h4 = document.createElement('h4');
+    h4.textContent = (card.type === 'locomotive')
+        ? `Тепловоз: ${card.name}`
+        : `Машинист: ${card.name}`;
+    textDiv.appendChild(h4);
+
     if (card.type === 'locomotive') {
         const pCode = document.createElement('p');
         pCode.innerHTML = `<strong>Код:</strong> ${card.code}`;
-        cardDiv.appendChild(pCode);
+        textDiv.appendChild(pCode);
     } else {
         const pPos = document.createElement('p');
         pPos.innerHTML = `<strong>Позиция:</strong> ${card.position}`;
         const pCode = document.createElement('p');
         pCode.innerHTML = `<strong>Код:</strong> ${card.code}`;
-        cardDiv.append(pPos, pCode);
+        textDiv.append(pPos, pCode);
     }
+
+    contentWrapper.appendChild(textDiv);
+    cardDiv.appendChild(contentWrapper);
 
     // Кнопки действий
     const actions = document.createElement('div');
