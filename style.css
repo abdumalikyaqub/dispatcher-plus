@@ -14,7 +14,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 12px;
+    border-radius: 3px;
     margin: 16px;
     color: #ffffff;
 }
@@ -261,4 +261,12 @@ body {
 .sortable-ghost {
     opacity: 0.5;
     background: #ccc;
+}
+
+.card-photo {
+    width: 100%;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 6px;
 }

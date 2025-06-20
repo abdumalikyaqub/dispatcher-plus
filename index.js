@@ -227,6 +227,17 @@ function updateCardInDB(card) {
         const request = store.put(card);
         request.onsuccess = () => resolve();
         request.onerror = (e) => reject(e.target.error);
+
+        // при обновлении DOM после сохранения:
+        const img = cardElem.querySelector('img');
+        if (img) {
+            img.src = newPhoto;
+        } else if (newPhoto) {
+            const newImg = document.createElement('img');
+            newImg.src = newPhoto;
+            newImg.classList.add('card-photo');
+            cardElem.insertBefore(newImg, cardElem.firstChild);
+        }
     });
 }
 
@@ -486,6 +497,13 @@ function createCardElement(card) {
 
     // Заголовок
     const h4 = document.createElement('h4');
+    if (card.photoUrl) {
+        const img = document.createElement('img');
+        img.src = card.photoUrl;
+        img.alt = 'Фото';
+        img.classList.add('card-photo');
+        cardDiv.appendChild(img);
+    }
     if (card.type === 'locomotive') {
         h4.textContent = `Тепловоз: ${card.name}`;
     } else {
@@ -553,6 +571,7 @@ async function createLocomotiveCard(columnId, subId) {
     if (!name) return;
     const code = prompt('Код тепловоза:');
     if (!code) return;
+    const photoUrl = prompt('Ссылка на фото тепловоза (опционально):');
 
     const id = 'loco-' + Date.now();
     const newCard = {
@@ -561,6 +580,7 @@ async function createLocomotiveCard(columnId, subId) {
         name,
         code,
         position: null,
+        photoUrl,
         columnId,
         subId
     };
@@ -583,6 +603,7 @@ async function createEngineerCard(columnId, subId) {
     if (!name) return;
     const code = prompt('Код машиниста:');
     if (!code) return;
+    const photoUrl = prompt('Ссылка на фото машиниста (опционально):');
 
     const id = 'eng-' + Date.now();
     const newCard = {
@@ -591,6 +612,7 @@ async function createEngineerCard(columnId, subId) {
         name,
         code,
         position,
+        photoUrl,
         columnId,
         subId
     };
@@ -639,6 +661,8 @@ async function openEditCardModal(cardElem) {
             if (!newName) return;
             const newCode = prompt('Новый код тепловоза:', card.code);
             if (!newCode) return;
+            const newPhoto = prompt('Новая ссылка на фото:', card.photoUrl || '');
+            card.photoUrl = newPhoto;
 
             card.name = newName;
             card.code = newCode;
@@ -654,6 +678,8 @@ async function openEditCardModal(cardElem) {
             if (!newName) return;
             const newCode = prompt('Новый код машиниста:', card.code);
             if (!newCode) return;
+            const newPhoto = prompt('Новая ссылка на фото:', card.photoUrl || '');
+            card.photoUrl = newPhoto;
 
             card.position = newPosition;
             card.name = newName;
