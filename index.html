@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Управление тепловозами и машинистами</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!-- Favicons -->
-    <link href="assets/images/favicon.png" rel="icon">
+    <link href="assets/images/favicon.png" rel="icon" />
 </head>
 <body>
 <!-- ----------------------------------------------------
-     Общая кнопка для добавления новой основной колонки
+ Общая кнопка для добавления новой основной колонки
 ----------------------------------------------------- -->
 <!-- Шапка с логотипом и кнопкой -->
 <div class="app-header">
+    <img src="./assets/images/logo.png" alt="Логотип" class="logo" />
     <div class="header-left">
-        <img src="./assets/images/logo.png" alt="Логотип" class="logo">
         <h1>Тақсимоти бригадҳои локомативии пойгоҳи минтақаи Суғд</h1>
     </div>
-    <button id="add-column-btn">+ Добавить колонку</button>
+    <button id="add-column-btn">Сутун илова кардан</button>
 </div>
 
 <!-- ----------------------------------------------------
-     Контейнер для всех колонок (будут создаваться JS)
+ Контейнер для всех колонок (будут создаваться JS)
 ----------------------------------------------------- -->
 <div id="board" class="board"></div>
 
